@@ -1,8 +1,17 @@
 const express = require('express')
 const Sequelize = require('sequelize')
+var bodyParser = require('body-parser')
 const app = express()
 const events_routes = require('./routes/events')
 
+//init db
+require('./db');
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 app.use('/',events_routes);
 
 //app.get('/', (req, res) => res.send('Hello World les gens!'))

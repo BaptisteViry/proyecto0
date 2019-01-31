@@ -1,33 +1,13 @@
 const bodyParser = require('body-parser');
-const Events = require('../models/event.js');
+const Events = require('../models/index');
 const router = require('express').Router();
 
-//const controller de event
-
-router.route('/')
-    .get((req,res)=> {
-        res.send("view all")
-    })
-
-router.route('/new')
-    .get((req,res)=> {
-        res.send("create")
-    })
-
-router.route('/update')
-    .get((req,res)=> {
-        res.send("update")
-    })
-    
-router.route('/delete')
-    .get((req,res)=> {
-        res.send("delete")
-    })
-
-router.route('/view')
-    .get((req,res)=> {
-        res.send("view one")
-    })
+const eventController = require('./../controllers/events'); 
+router.get('/', eventController.getAllEvents);
+router.post('/create', eventController.createEvent);
+router.get('/:id(\\d+)', eventController.getEventById);
+router.delete('/:id(\\d+)/delete',eventController.deleteEvent);
+router.put('/:id(\\d+)', eventController.updateEvent);
 
 module.exports = router;
 
