@@ -1,0 +1,57 @@
+<div fxLayoutAlign="center">
+  <mat-card fxFlex class="max-width">
+      <mat-card-header>
+          <mat-card-title>
+              <section class="mat-typography">
+                  <h1>Liste des Events</h1>
+              </section>
+          </mat-card-title>
+          <div fxFlex></div>
+          <a mat-mini-fab color="primary" routerLink="/new" >
+              <mat-icon>add</mat-icon>
+          </a>
+      </mat-card-header>
+      <mat-card-content>
+          <div class="header">
+ 
+          </div>
+          <div class="mat-elevation-z3">
+              <mat-table #table [dataSource]="eventsData" matSort>
+                  <ng-container matColumnDef="name">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                      <mat-cell *matCellDef="let event"> {{event.name}} </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="category">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
+                      <mat-cell *matCellDef="let event"> {{event.category}} </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="place">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> Place </mat-header-cell>
+                      <mat-cell *matCellDef="let event"> {{event.place}} </mat-cell>
+                  </ng-container>
+<!--
+                  <ng-container matColumnDef="action">
+                      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                      <mat-cell *matCellDef="let barman" >
+                          <div fxLayout="row">
+                              <button mat-icon-button (click)="edit(barman)" *ngxPermissionsOnly="['barman:write']"><mat-icon>edit</mat-icon></button>
+                              <button mat-icon-button (click)="view(barman)"><mat-icon>zoom_in</mat-icon></button>
+                          </div>
+                      </mat-cell>
+                  </ng-container>
+                -->
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+
+              <mat-paginator #paginator
+                  [pageIndex]="0"
+                  [pageSize]="10"
+                  [pageSizeOptions]="[5, 10, 25, 100]">
+              </mat-paginator>
+          </div>
+      </mat-card-content>
+  </mat-card>
+</div>
