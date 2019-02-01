@@ -1,0 +1,78 @@
+<div fxLayoutAlign="center">
+  <mat-card fxFlex class="max-width">
+      <mat-card-header>
+          <mat-card-title fxLayout="row">
+              <a mat-button routerLink="/"><mat-icon>arrow_back</mat-icon></a>
+              <section  class="mat-typography">
+                  <h1>Create an event</h1>
+              </section>
+          </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+      <!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <h3>Please fill the form</h3>
+              <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                  <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" name="name" [(ngModel)]="event.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required />
+                      <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                          <div *ngIf="name.errors.required">Name is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="category">Category</label>
+                      <input type="text" class="form-control" name="category" [(ngModel)]="event.category" #category="ngModel" [ngClass]="{ 'is-invalid': f.submitted && category.invalid }" required />
+                      <div *ngIf="f.submitted && category.invalid" class="invalid-feedback">
+                          <div *ngIf="category.errors.required">Category is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="place">Place</label>
+                    <input type="text" class="form-control" name="place" [(ngModel)]="event.place" #place="ngModel" [ngClass]="{ 'is-invalid': f.submitted && place.invalid }" required />
+                    <div *ngIf="f.submitted && place.invalid" class="invalid-feedback">
+                        <div *ngIf="place.errors.required">The place is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" class="form-control" name="address" [(ngModel)]="event.address" #address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required />
+                  <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
+                      <div *ngIf="address.errors.required">The address is required</div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="initDate">Init Date</label>
+                <input type="datetime-local" class="form-control" name="initDate" [(ngModel)]="event.initDate" #initDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && initDate.invalid }" required />
+                <div *ngIf="f.submitted && initDate.invalid" class="invalid-feedback">
+                    <div *ngIf="initDate.errors.required">The init date is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="endDate">End Date</label>
+              <input type="datetime-local" class="form-control" name="endDate" [(ngModel)]="event.endDate" #endDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && endDate.invalid }" required />
+              <div *ngIf="f.submitted && endDate.invalid" class="invalid-feedback">
+                  <div *ngIf="endDate.errors.required">The end date is required</div>
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="type">Presencial</label>
+            <input type="checkbox" class="form-control" name="type" [(ngModel)]="event.type" #type="ngModel" />
+            
+        </div>
+                  
+                  <div class="form-group">
+                      <button class="btn btn-primary">Create</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+</mat-card-content>
+     
+  </mat-card>
+</div>

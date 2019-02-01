@@ -37,6 +37,8 @@ import {
     MatTooltipModule,
 } from '@angular/material';
 
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
 
 @NgModule({
     exports: [
@@ -73,6 +75,8 @@ import {
         MatToolbarModule,
         MatTooltipModule,
         FormsModule,
+        OwlDateTimeModule,
+        OwlNativeDateTimeModule,
     ],
 })
 export class MaterialModule { }

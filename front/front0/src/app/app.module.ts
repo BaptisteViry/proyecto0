@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 //material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -10,29 +11,34 @@ import 'hammerjs';
 
 //component
 import { AppComponent } from './app.component';
-import { EventsComponent } from './events/events.component';
 import { EventListComponent } from './event-list/event-list.component';
 
 //services
 import { EventsService } from './events.service';
+import { ToasterService } from './toaster.service';
+import { EventViewComponent } from './event-view/event-view.component';
+import { EventCreateComponent } from './event-create/event-create.component';
 
 
 const appRoutes: Routes = [
-  { path: 'events', component: EventListComponent },
-  { path: '', component: AppComponent },
-  //{ path: 'hero/:id',      component: HeroDetailComponent },
+  { path: '', component: EventListComponent },
+  { path: 'event/:id', component: EventViewComponent },
+  { path: 'create', component: EventCreateComponent }
+
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventsComponent,
-    EventListComponent
+    EventListComponent,
+    EventViewComponent,
+    EventCreateComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes,
@@ -40,7 +46,8 @@ const appRoutes: Routes = [
     )
   ],
   providers: [
-    EventsService
+    EventsService,
+    ToasterService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,46 @@
+<div fxLayoutAlign="center">
+  <mat-card fxFlex class="max-width">
+      <mat-card-header>
+          <mat-card-title fxLayout="row">
+              <a mat-button routerLink="/"><mat-icon>arrow_back</mat-icon></a>
+                  <h1>{{event?.name}}</h1>
+              
+          </mat-card-title>
+          <div fxFlex></div>
+      </mat-card-header>
+      <mat-card-content>
+          <mat-list>
+              <h3 mat-subheader>Event Info</h3>
+              <mat-list-item>
+                  <h4 matLine>Name</h4>
+                  <p matLine>{{event?.name}}</p>
+              </mat-list-item>
+              <mat-list-item>
+                  <h4 matLine>Category</h4>
+                  <p matLine>{{event?.category}}</p>
+              </mat-list-item>
+              <mat-list-item>
+                  <h4 matLine>Place</h4>
+                  <p matLine>{{event?.place}}</p>
+              </mat-list-item>
+              <mat-list-item>
+                  <h4 matLine>Address</h4>
+                  <p matLine>{{event?.address}}</p>
+              </mat-list-item>
+              <mat-list-item>
+                  <h4 matLine>Init date</h4>
+                  <p matLine>{{event?.initDate | date:'d MMM y'}}</p>
+              </mat-list-item>
+              <mat-list-item>
+                  <h4 matLine>End date</h4>
+                  <p matLine>{{event?.endDate | date:'d MMM y'}}</p>
+              </mat-list-item>
+              <mat-list-item>
+                <h4 matLine>Presencial ?</h4>
+                <p matLine>{{event?.type}}</p>
+            </mat-list-item>
+
+          </mat-list>
+      </mat-card-content>
+  </mat-card>
+</div>

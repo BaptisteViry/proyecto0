@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Event } from './../event';
 import { Router } from '@angular/router';
 import { EventsService } from './../events.service';
+import { ToasterService } from './../toaster.service';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 
@@ -12,15 +13,14 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 })
 export class EventListComponent implements OnInit {
 
- // eventsData: Array<Event>;
-
-  displayedColumns = ['name', 'category', 'place'];
+  displayedColumns = ['name', 'category', 'place','initDate','action'];
   eventsData: MatTableDataSource<Event>;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private eventsService: EventsService, 
+  constructor(private eventsService: EventsService,
+    private toasterService: ToasterService, 
     private router: Router) { }
 
   ngOnInit(): void {
@@ -32,6 +32,15 @@ export class EventListComponent implements OnInit {
     })
   }
 
+  delete(event: Event): void {
+    this.eventsService.delete(event.id).subscribe(() => {
+      this.toasterService.showToaster('Event deleted, please refresh the page');
+        this.router.navigate(['']);
+    });
+}
+view(event: Event): void {
+  this.router.navigate(['/event', event.id]);
+}
  
 
 }

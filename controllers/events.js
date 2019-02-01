@@ -27,7 +27,7 @@ async function createEvent(req, res) {
         address: data.address || "",
         initDate: data.initDate || "2016-01-01 00:00:00+00:00",
         endDate: data.endDate || "2018-01-01 00:00:00+00:00",
-        type: data.type || "",
+        type: data.type || false,
     })
 
     const eventDone = await newEvent.save();
